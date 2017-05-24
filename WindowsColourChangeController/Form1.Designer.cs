@@ -58,7 +58,7 @@ namespace WindowsColourChangeController
             // 
             // serialPort1
             // 
-            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SerialPort1_DataReceived);
             // 
             // currentColourLabel
             // 
@@ -223,11 +223,12 @@ namespace WindowsColourChangeController
             this.comSelect.Items.AddRange(new object[] {
             "COM1",
             "COM3"});
+            // HACK: we currently seem to fic the com ports available to select, we should do a detection and set them based on that.
             this.comSelect.Location = new System.Drawing.Point(83, 185);
             this.comSelect.Name = "comSelect";
             this.comSelect.Size = new System.Drawing.Size(121, 21);
             this.comSelect.TabIndex = 18;
-            this.comSelect.DropDownClosed += new System.EventHandler(this.comSelect_DropDownClosed);
+            this.comSelect.DropDownClosed += new System.EventHandler(this.ComSelect_DropDownClosed);
             // 
             // comLabel
             // 
@@ -240,11 +241,9 @@ namespace WindowsColourChangeController
             // 
             // notifyIcon
             // 
-            this.notifyIcon.Text = "ArduinoColourControler";
-            this.notifyIcon.Visible = false;
-            this.notifyIcon.Text = currentColour.ToString();
             this.notifyIcon.Icon = this.Icon;
-            this.notifyIcon.DoubleClick += new System.EventHandler(this.mouse_doubleclick);
+            this.notifyIcon.Text = " WindowsColourChangeController - " + this.currentColour.Name;
+            this.notifyIcon.DoubleClick += new System.EventHandler(this.MouseDoubleclick);
             // 
             // Form1
             // 
@@ -271,10 +270,11 @@ namespace WindowsColourChangeController
             this.Controls.Add(this.cRed);
             this.Controls.Add(this.sendColourLabel);
             this.Controls.Add(this.currentColourLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = " WindowsColourChangeController";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-            this.Resize += new System.EventHandler(this.form_Resize);
+            this.Resize += new System.EventHandler(this.FormResize);
             this.ResumeLayout(false);
             this.PerformLayout();
 
