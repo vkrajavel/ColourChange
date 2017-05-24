@@ -103,7 +103,6 @@ namespace WindowsColourChangeController
                                     break;
                                 case "Color":
                                     reader.Read();
-                                    Console.WriteLine(reader.Value);
                                     int temp;
                                     int.TryParse(reader.Value, out temp);
                                     customCol.Add(temp);

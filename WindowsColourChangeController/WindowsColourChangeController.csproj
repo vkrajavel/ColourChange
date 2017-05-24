@@ -73,6 +73,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\..\..\Downloads\TestSerialCommunication\CRCTool.cs">
+      <Link>CRCTool.cs</Link>
+    </Compile>
+    <Compile Include="SerialPacket.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
